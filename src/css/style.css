@@ -1,0 +1,817 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+figaboure,
+p,
+ol,
+ul {
+    margin: 0;
+
+    /* робить виділення тексту іншим кольором
+    &::selection {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.8);
+    } */
+}
+
+ol[role="list"],
+ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-size: inherit;
+    font-weight: inherit;
+
+
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+:root {
+    --light-color: rgb(245, 245, 247);
+    --dark-color: #221F20;
+    --container-padding-inline: 13%;
+    --footer-padding-inline: 10%;
+
+    &::selection {
+        background-color: rgba(0, 0, 0, 0.4);
+        /* робимо інше виділення тексту */
+
+    }
+
+    @media screen and (max-width: 768px) {
+        --container-padding-inline: 6%;
+        --footer-padding-inline: 6%;
+    }
+
+    @media screen and (max-width: 576px) {
+
+        --container-padding-inline: 15px;
+        --footer-padding-inline: 15px;
+    }
+}
+
+html {
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    padding: 0 var(--container-padding-inline);
+}
+
+.title {
+    text-align: left;
+    color: var(--light-color);
+
+}
+
+.title__universal {
+    color: var(--dark-color);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    text-align: left;
+    text-align: center;
+
+
+    /* Underline */
+    /* width: 75px;
+    height: 0;
+    border: 2px solid rgb(0, 0, 0); */
+
+    span {
+        position: relative;
+    }
+
+    span::after {
+        /* використовуємо after, бо елемент знаходиться після елементу. В даному випадку риска під заголовком.*/
+        content: '';
+        display: block;
+        width: 75px;
+        border: 2px solid rgb(0, 0, 0);
+
+        /* position: absolute;
+        bottom: 2px;
+        left: 613px;
+        цей варіант не підходить, бо при зміні розміру екрану, сама лінія не буде слідувати за словом, а залишатиметься на своєму місці. */
+
+        /* розбиваємо задачу на підзадачі.
+         Заголовок загортаємо в span. Щоб до нього застосувати псевдоклас. 
+        Йому ж вказуємо позиціонування релатів.*/
+        position: absolute;
+        right: 0;
+        bottom: 2;
+    }
+
+    @media screen and (max-width: 768px) {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    @media screen and (max-width:576px) {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+
+}
+
+
+.screen__first {
+    background: url('../image/Bg.jpeg') center center/cover no-repeat;
+    min-height: 100vh;
+    position: relative;
+
+    h1 {
+        font-size: 60px;
+        font-weight: 400;
+        line-height: 73px;
+        text-transform: uppercase;
+        padding-top: 75px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 48px;
+            line-height: 58px;
+        }
+
+    }
+
+    @media screen and (max-width:768px) {
+        border-image: url('../image/Bg_768.png');
+    }
+
+    @media screen and (max-width: 576px) {
+        h1 {
+            padding-top: 50px;
+            font-size: 26px;
+            line-height: 31px;
+
+        }
+
+        min-height: 500px;
+        border-image: url('../image/bg_375.png');
+    }
+
+
+}
+
+.want {
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 39px;
+    padding-top: 125px;
+
+    @media screen and (max-width:768px) {
+        padding-top: 80px;
+    }
+
+    @media screen and (max-width:576px) {
+        padding-top: 30px;
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+
+.btn {
+    /* Button */
+    /* коли замінили кнопку на посилання то додаємо ці властивості. 
+    display: block;
+        text-align: center;
+        text-decoration: none; */
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
+
+    margin-top: 20px;
+    padding: 10px 50px;
+    width: 160px;
+    /* min-width: 160px; */
+    min-height: 38px;
+    color: var(--light-color);
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19px;
+    box-sizing: border-box;
+    border: 1px solid rgb(245, 245, 247);
+    background: rgba(217, 217, 217, 0);
+    /* cursor:pointer; вказуємо, що при наведенні на кнопку мишка змінюється на руку з пальцем. */
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    /* transition: all 0.3s ease-out; робимо плавну анімацію для кнопки.  */
+
+    @media screen and (max-width:576px) {
+        /* Button */
+        width: 120px;
+        min-height: 30px;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 7px 33px;
+    }
+
+}
+
+.btn:hover {
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px 0px rgba(255, 255, 255, 0.62);
+    font-weight: 500;
+}
+
+/* стилізуємо кнопку як в макеті, при наведенні на неї. */
+
+.location {
+    padding-top: 100px;
+    color: var(--light-color);
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19px;
+    text-align: left;
+
+    position: relative;
+    /* position: relative; - щоб картинка стрілки спрацювала, коли їй назначають absolute*/
+
+    address {
+        font-style: normal;
+        /* змінюємо стиль з курсива на нормальний. */
+    }
+
+    a {
+        /* color: var(--light-color); */
+        /* color: inherit; наслідування, спадковість. Тобто колір буде як у батьківського класа. */
+        color: inherit;
+        /* text-decoration: none; не буде підкреслення в посиланні. */
+        text-decoration: none;
+    }
+
+    /* додаємо псевдоклас за допомогою &. Стрілку додаємо, яка буде йти до блока. */
+    &::before {
+        content: "";
+        /* прописуємо обов'язково, бо не буде відображ. елемент. */
+        width: 40px;
+        height: 49px;
+        background: url('../image/Arrow.svg') center center/cover no-repeat;
+        display: block;
+        position: absolute;
+
+        /* позиціюємо картинку */
+        /* left: -45px; - розмір самого блока + відступ до контенту. */
+        left: -45px;
+        bottom: 26px;
+
+        /*  зміщуємо вверх */
+
+    }
+
+    @media screen and (max-width:768px) {
+        padding-top: 80px;
+    }
+
+    &::before {
+        @media screen and (max-width:768px) {
+            top: 75px;
+            width: 30px;
+            height: 37px;
+            left: -25px;
+
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        padding-top: 233px;
+    }
+
+    &::before {
+        @media screen and (max-width:576px) {
+            display: none;
+        }
+    }
+
+}
+
+.arrow {
+    display: block;
+    position: absolute;
+    margin-top: 83px;
+    padding-right: 5px;
+}
+
+.keywords {
+    /* даємо розміри. width: 100%; -ширина від батьківського класу (.screen__first) */
+    width: 100%;
+    /* фіксована висота. height: 20px; */
+    height: 20px;
+    /* цей блок ми фіксуємо внизу, за допомогою абсолютного позиціонування.
+         Батьківському елементу(.screen__first) кажемо, що position:relative; */
+
+
+    /* фон блока */
+    background: linear-gradient(180.00deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.2) 100%);
+    /* тепер розміщуєму цей блок з градієнтом внизу.
+    position: absolute;
+        bottom: 0; */
+    position: absolute;
+    bottom: 0;
+
+    /* відступи 0 зверху і знизу, 360 по бокам. */
+    padding: 0 360px;
+
+    /*в середині є ліст айтеми - li , які будуть знаходитись чітко в кейвордс(keywords)
+     і в них властивість list-style-type: none; -це прибирає значки списка. */
+
+    li {
+        list-style-type: none;
+        /* стилізуємо текст. */
+        color: var(--light-color);
+        font-size: 10px;
+        font-weight: 100;
+        line-height: 12px;
+        text-align: left;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* align-items: center; фіксує елементи по центру. */
+
+    @media screen and (max-width: 1440px) {
+        padding: 0 20px;
+        /* робимо,щоб коректно відображався флекс. */
+    }
+
+    @media screen and (max-width:768px) {
+        height: 12px;
+
+        & li:nth-last-child(-n+6) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        height: 14px;
+
+        & li:nth-last-child(-n+11) {
+            display: none;
+        }
+
+        margin-top: 13px;
+        padding-bottom: 3px;
+    }
+
+}
+
+.about {
+    background-color: var(--light-color);
+    padding-top: 80px;
+
+    @media screen and (max-width:768px) {
+        padding-top: 62px;
+    }
+
+    @media screen and (max-width:576px) {
+        padding-top: 50px;
+    }
+}
+
+.about__title {
+    color: var(--dark-color);
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    text-align: left;
+}
+
+.about__text {
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    text-align: left;
+    width: 1100px;
+
+    span {
+        color: #A5A5A5;
+    }
+
+    @media screen and (max-width: 1440px) {
+        width: 100%;
+
+    }
+
+    @media screen and (max-width:768px) {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    @media screen and (max-width:576px) {
+        font-size: 16px;
+        line-height: 19px;
+
+    }
+}
+
+.services {
+    /* розподіляємо контент на дві частини */
+    display: flex;
+    column-gap: 10px;
+    margin-top: 80px;
+
+    @media screen and (max-width:768px) {
+        margin-top: 40px;
+        flex-wrap: wrap;
+        row-gap: 40px;
+    }
+
+    @media screen and (max-width:576px) {
+        margin-top: 19px;
+        row-gap: 20px;
+    }
+
+}
+
+
+.services__item-subtitle {
+    font-style: italic;
+
+    @media screen and (max-width:576px) {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+}
+
+.services__items {
+    width: 50%;
+    /* 50% від батьківського класу. */
+    color: var(--dark-color);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    position: relative;
+
+    ul {
+        margin-top: 19px;
+        padding: 0;
+    }
+
+    li {
+        color: var(--dark-color);
+        list-style-type: none;
+        margin-top: 10px;
+
+        /* беремо перший елемент */
+        &:first-child::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            background: url('../image/Camera.svg') center center/cover no-repeat;
+            left: -30px;
+
+        }
+
+        /* беремо третю дитину по порядку */
+        &:nth-child(3)::before {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            background: url('../image/Edit.svg') center center/cover no-repeat;
+            left: -30px;
+
+        }
+
+
+    }
+
+    @media screen and (max-width:768px) {
+        width: 100%;
+
+        & li:first-child::before {
+            left: -25px;
+        }
+
+        & li:nth-child(3):before {
+            left: -25px;
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        width: 100%;
+
+        &:first-child::before {
+            display: none;
+        }
+
+        &:nth-child(3)::before {
+            display: none;
+        }
+
+        font-size: 14px;
+        line-height: 17px;
+
+        & li {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    }
+
+
+}
+
+.services__text {
+    width: 50%;
+    color: var(--dark-color);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 2%;
+    text-align: left;
+
+    @media screen and (max-width:768px) {
+        padding-top: 39px;
+        width: 100%;
+    }
+
+    @media screen and (max-width:576px) {
+        padding-top: 20px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+.works {
+    background: var(--light-color);
+    padding-top: 80px;
+
+    @media screen and (max-width:768px) {
+        padding-top: 50px;
+    }
+}
+
+.grid__pfoto {
+    margin-top: 50px;
+    display: grid;
+    /* grid-template-columns: 695px 695px; */
+    /* ШОБ КОЛОНКИ КОРЕКТНО ВІДОБРАЖАЛИСЬ НА РІЗНИХ ЕКРАНАХ */
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    grid-template-rows: repeat(2, 1fr) 1.5fr;
+    row-gap: 50px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    @media screen and (max-width:768px) {
+        margin-top: 40px;
+        gap: 30px 20px;
+    }
+
+    @media screen and (max-width:576px) {
+        /* display: flex;
+        flex-wrap: wrap; */
+
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr) 1.5fr;
+
+    }
+
+}
+
+.inspiration {
+    background: var(--light-color);
+    padding-top: 80px;
+
+    @media screen and (max-width:768px) {
+        padding-top: 50px;
+    }
+
+}
+
+
+.grid__inspiration {
+    padding-top: 51px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    @media screen and (max-width:768px) {
+        margin-top: 40px;
+        gap: 30px 20px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    @media screen and (max-width:576px) {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        /* grid-template-columns: repeat(1, 1fr);
+        column-gap: 20px; */
+    }
+}
+
+#tenement {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 4;
+
+    @media screen and (max-width:768px) {
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 2;
+    }
+
+}
+
+#sky {
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+    @media screen and (max-width:768px) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
+
+.customers {
+    background: var(--light-color);
+    padding-top: 80px;
+    padding-bottom: 100px;
+
+    @media screen and (max-width:768px) {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+
+.flex__customers {
+    margin-top: 51px;
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-wrap: wrap; -вказуємо, що наступні елементи, якщо вони будуть додані.
+     То перекинуться на новий рядок.  */
+    /* justify-content: left; не потрібен, так як елементи з самого початку йдуть з лівого боку. */
+    gap: 30px;
+
+
+    img {
+        box-shadow: 7px 7px 12px 0px rgba(0, 0, 0, 0.25);
+        width: calc((100% - 90px) / 4);
+        /* обов'язково робимо пробіли між знаками, інакше функція не спрацює. */
+    }
+
+    @media screen and (max-width:768px) {
+        padding-top: 40px;
+        gap: 20px;
+
+        img {
+            width: calc((100% - 60px) / 4);
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        margin-top: 30px;
+        gap: 20px 36px;
+        /* display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr); */
+        justify-content: space-between;
+
+        img {
+            /* width: 100%;
+            height: 100%;
+            object-fit: cover; */
+            width: calc((100% - 36px) / 2);
+        }
+    }
+
+}
+
+footer {
+    background: rgb(0, 0, 0);
+    padding-top: 100px;
+    color: var(--light-color);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    padding: 88px var(--footer-padding-inline);
+
+    address {
+        font-style: normal;
+
+        @media screen and (max-width:768px) {
+            padding: 30px 0 30px 0;
+        }
+
+        @media screen and (max-width:576px) {
+            padding: 30px 0 30px 0;
+            order: 3;
+        }
+
+    }
+
+    align-items: center;
+    /* два блоки розміщуємо по центру */
+
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width:768px) {
+        font-size: 16px;
+        line-height: 19px;
+        /* display: block; */
+        padding: 30px var(--footer-padding-inline) 40px var(--footer-padding-inline);
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 30px;
+
+    }
+
+    @media screen and (max-width:576px) {
+        /* flex-wrap: wrap;
+        justify-content: center;
+        display: flex; */
+        align-items: center;
+    }
+
+}
+
+.footer__tel {
+    text-decoration: none;
+    color: var(--light-color);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+    @media screen and (max-width:576px) {
+        order: 2;
+    }
+}
+
+.icons__social {
+    /* робимо флекс в флексі */
+    display: flex;
+    padding-left: 0;
+    column-gap: 30px;
+    list-style-type: none;
+
+    li {
+        width: 32px;
+        height: 32px;
+        box-sizing: border-box;
+        border: 1px solid rgb(245, 245, 247);
+        background: rgba(217, 217, 217, 0);
+
+        /* вирівнюємо іконку по центру */
+
+
+        a {
+            display: flex;
+            justify-content: center;
+            /* вирівнювання елементиві по горизонталі */
+            align-items: center;
+            /* вирівнювання елементиві по вертикалі */
+            width: 100%;
+            height: 100%;
+
+            img {
+                /* фіксуємо розмір іконки */
+                width: 22px;
+                height: 22px;
+            }
+
+            /* span {
+                color: white;
+            }*/
+        }
+    }
+}
